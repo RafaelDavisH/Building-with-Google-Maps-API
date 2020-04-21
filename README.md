@@ -11,3 +11,6 @@ Series:
 [Part 2](https://github.com/RafaelDavisH/Building-with-Google-Maps-API/tree/part2) : Adding multiple markers locations and adding dark mode styles to the map.
 
 [part 3](https://github.com/RafaelDavisH/Building-with-Google-Maps-API/tree/part3) : Adding DROP and BOUNCE animations to the markers, create an info window with the InfoWindow() constructor, and display the restaurant title.
+
+[part 4](https://github.com/RafaelDavisH/Building-with-Google-Maps-API/tree/part4) :
+Using apiwithgithub.com to create and fetch the locations API to load markers with their title, location, and content to the map.
