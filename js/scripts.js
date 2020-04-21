@@ -1,90 +1,37 @@
-const restaurants = [
-  {
-    title: "Salt & Straw",
-    location: {lat: 34.0460068, lng: -118.23545710000002},
-    content: `Hello Salt & Straw`,
-  },
-  {
-    title: "Wurstküche",
-    location: {lat: 34.045603, lng: -118.2360580000000},
-    content: `Hello from Wurstküche`
-  },
-  {
-    title: "Umami Burger",
-    location: {lat: 34.0455352, lng: -118.2366844},
-    content: `Hello from Umami Burger`
-  },
-  {
-    title: "The Pie Hole",
-    location: {lat: 34.0453839, lng: -118.2362544},
-    content: `Hello from The Pie Hole`
-  },
-  {
-    title: "Groundwork Coffee Co",
-    location: {lat: 34.0452489, lng: -118.23534770000003},
-    content: `Hello from Groundwork`
-  },
-  {
-    title: "Lincoln",
-    location: {lat: 34.180001, lng: -118.159262},
-    content: `Hello from Lincoln`
-  },
-  {
-    title: "Square One Dining",
-    location: {lat: 34.095334, lng: -118.295005},
-    content: `Hello from Square one Dinning`
-  },
-  {
-    title: "Sqirl Kitchen",
-    location: {lat: 34.084543, lng: -118.286653},
-    content: `Hello from Sqirl`
-  },
-  {
-    title: "Daisy Mint",
-    location: {lat: 34.145781, lng: -118.125226},
-    content: `Hello from Daisy Mint`
-  },
-  {
-    title: "Malibu Seafood Fresh Fish Market & Patio Cafe",
-    location: {lat: 34.033855, lng: -118.735076},
-    content: `Hello from Malibu`
-  },
-  {
-    title: "Robin's Wood Fire BBQ",
-    location: {lat: 34.152976, lng: -118.077448},
-    content: `Hello from Robin`
-  },
-  {
-    title: "Hook Burger Bistro",
-    location: {lat: 34.150402, lng: -118.079421},
-    content: `Hello from Hook`
-  },
-  {
-    title: "Shake Shack",
-    location: {lat: 34.142795, lng: -118.254761},
-    content: `Hello from Shake`
-  },
-  {
-    title: "Mr. Holmes Bakehouse",
-    location: {lat: 34.121253, lng: -118.190510},
-    content: `Hello from Mr.`
-  },
-  {
-    title: "Donut Friend",
-    location: {lat: 34.110227, lng: -118.204409},
-    content: `Hello from Donut Friend`
-  },
-  {
-    title: "The India Restaurant",
-    location: {lat: 33.868764, lng: -118.081770},
-    content: `Hello from The India Restaurant`
-  },
-  {
-    title: "DeSano Pizza Bakery",
-    location: {lat: 34.091135, lng: -118.297763},
-    content: `Hello from DeSano`
-  },
-]
+// url to locations API
+const endpoint = 'https://raw.githubusercontent.com/RafaelDavisH/profile-database/master/locations';
+
+// * async and await in arrow function form
+const fetchLocations = async () => {
+  let response = await fetch(endpoint);
+  let restaurants = await response.json();
+  createMarkers(restaurants);
+}
+
+
+// * async and await declarations
+// async function fetchLocations() {
+//   let response = await fetch(endpoint);
+//   let restaurants = await response.json();
+//   createMarkers(restaurants);
+// }
+
+
+// * Basic  fetch request declaration
+// function fetchLocations() {
+//   const api = fetch(endpoint);
+//   api.then(response => {
+//     return response.json();
+//   }).then(data => {
+//     let restaurants = data;
+//     createMarkers(restaurants);
+//   }).catch(handleError);
+// }
+
+// function handleError(err) {
+//   console.log("Hunston we have a problem!");
+//   console.log(err);
+// }
 
 let map, infowindow;
 function initMap() {
@@ -175,18 +122,18 @@ function initMap() {
 
     })
 
-    createMarkers();
+    fetchLocations();
 
 }
 
-function createMarkers() {
-  for(let i = 0; i < restaurants.length; i++) {
+function createMarkers(locations) {
+  for(let i = 0; i < locations.length; i++) {
     let marker = new google.maps.Marker({
-      position: restaurants[i].location, 
+      position: locations[i].latlng, 
       map: map,
       animation: google.maps.Animation.DROP,
-      title: restaurants[i].title,
-      content: restaurants[i].content
+      title: locations[i].title,
+      content: locations[i].content
     });
 
     infowindow = new google.maps.InfoWindow({});
