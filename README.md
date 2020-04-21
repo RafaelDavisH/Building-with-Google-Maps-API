@@ -6,6 +6,6 @@ part 4 - Using API with Github to create and fetch the locations API to load mar
 
 Links:
 
-[master Repo](https://github.com/RafaelDavisH/Building-with-Google-Maps-API/tree/master)
+[Master Repo](https://github.com/RafaelDavisH/Building-with-Google-Maps-API/tree/master)
 
 [apiwithgithub](https://apiwithgithub.com)
