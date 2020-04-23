@@ -1,4 +1,4 @@
-// url to locations API
+// url to locations API 
 endpoint =
   "https://raw.githubusercontent.com/RafaelDavisH/profile-database/master/locations";
 
